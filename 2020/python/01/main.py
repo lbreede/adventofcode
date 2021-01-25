@@ -1,4 +1,4 @@
-lineList = list()
+lineList = []
 with open("input.txt") as f:
  	for line in f:
 		lineList.append(int(line))
