@@ -1,8 +1,5 @@
 # --- Day 3: No Matter How You Slice It ---
 
-# f = open("input.txt", "r")
-# print(f.read())
-
 def claimListFromInput(input):
 	f = open(input, "r")
 	raw_claim_list = f.read().split("\n")
