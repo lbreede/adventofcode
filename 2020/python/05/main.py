@@ -6,25 +6,23 @@ with open("input.txt", "r") as f:
 # line_list = ["FBFBBFFRLR"]
 # line_list = ["BFFFBBFRRR" , "FFFBBBFRRR", "BBFFBBFRLL"]
 
-def findseat(code, amount, upper, lower):
+def findseat(code, amount):
 	current_min = 0
 	current_max = amount - 1
 	for i in range(len(code)):
 		amount *= 0.5
-		if code[i] == upper:
+		if code[i] == "F" or code[i] == "L":
 			current_max -= amount
-		elif code[i] == lower:
+		elif code[i] == "B" or code[i] == "R":
 			current_min += amount
-
-	if current_min == current_max:
-		return int(current_min)
+	return int(current_min)
 
 all_seat_ids = []
 for line in line_list:
 	row_code = line[:-3]
 	col_code = line[-3:]
-	row = findseat(row_code, 128, "F", "B")
-	col = findseat(col_code, 8, "L", "R")
+	row = findseat(row_code, 128)
+	col = findseat(col_code, 8)
 	seat_id = row * 8 + col
 	all_seat_ids.append(seat_id)
 
