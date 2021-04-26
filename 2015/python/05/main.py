@@ -55,7 +55,7 @@ def isNicePartTwo(string):
 
 		return nice
 
-lines = [line.rstrip('\r\n') for line in open("input.txt")]
+lines = [line.rstrip('\r\n') for line in open("inputdata.txt")]
 # lines = ["ugknbfddgicrmopn", "aaa", "jchzalrnumimnmhp", "haegwjzuvuyypxyu", "dvszwmarrgswjxmb"]
 lines = ["qjhvhtzxzqqjkmpb", "xxyxx", "uurcxstgmygtbstg", "ieodomkazucvgmuy"]
 

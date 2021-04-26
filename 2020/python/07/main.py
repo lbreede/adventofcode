@@ -1,7 +1,5 @@
 # --- Day 7: Handy Haversacks ---
 
-import time
-
 with open("inputdata.txt", "r") as text:
     bags = text.read().split("\n")
 
