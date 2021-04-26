@@ -1,68 +1,32 @@
-# --- Day 5: Doesn't He Have Intern-Elves For This? ---
+# --- Day 5: Doesn"t He Have Intern-Elves For This? ---
 
 import re
 
-def hasVowels(string, amount):
-	c = len(re.findall("[aeiou]", string)) >= amount
-	return c
+with open("inputdata.txt", "r") as f:
+    string_list = f.read().split("\n")
 
-def hasTwoConsecutiveLetters(string):
-	regexp = re.compile(r"([a-z])\1")
-	if re.search(regexp, string):
-		c = True
-	else:
-		c = False
-	return c
+# most regular expression are inspired or copied in it"s entirety from 
+# u/technojamin on the adventofcode subreddit.
 
-def hasForbiddenStrings(string, forbidden):
-	regexp = "|".join(forbidden)
-	c = len(re.findall(regexp, string)) == 0
-	return c
+count_part_1 = count_part_2 = 0
+for string in string_list:
+	if (re.search(r"([aeiou].*){3,}", string) and
+		re.search(r"(.)\1", string) and
+		not re.search(r"ab|cd|pq|xy", string)):
+		count_part_1 += 1
+	if (re.search(r"(..).*\1", string) and
+		re.search(r"(.).\1", string)):
+		count_part_2 += 1
 
-def hasTwoConsecutiveLetterPairs(string):
-	regexp = re.compile(r"([a-z][a-z])\1")
-	if re.search(regexp, string):
-		c = True
-	else:
-		c = False
-	return c
-
-def isNicePartOne(string):
-	forbidden = ["ab", "cd", "pq", "xy"]
-
-	nice = 0
-
-	for L in string:
-		cond1 = hasVowels(L, 3)
-		cond2 = hasTwoConsecutiveLetters(L)
-		cond3 = hasForbiddenStrings(L, forbidden)
-		
-		if cond1 and cond2 and cond3:
-			nice += 1
-
-	return nice
-
-def isNicePartTwo(string):
-
-	nice = 0
-
-	for L in string:
-		cond1 = hasTwoConsecutiveLetterPairs(string)
-		cond2 = True
-
-		if cond1 and cond2:
-			nice += 1
-
-		return nice
-
-lines = [line.rstrip('\r\n') for line in open("inputdata.txt")]
-# lines = ["ugknbfddgicrmopn", "aaa", "jchzalrnumimnmhp", "haegwjzuvuyypxyu", "dvszwmarrgswjxmb"]
-lines = ["qjhvhtzxzqqjkmpb", "xxyxx", "uurcxstgmygtbstg", "ieodomkazucvgmuy"]
+print(count_part_1)
+print(count_part_2)
 
 
-for L in lines:
-	x = re.findall(r"(..){2}", L)
-	print(x)
+# - REGEX USED FOR FUTURE REFERENCE -
 
-# print(isNicePartOne(lines))
-# print(isNicePartTwo(lines))
+"([aeiou].*){3,}"	# AT LEAST 3 VOWELS e.g.: xazegov
+"(.)\1"				# ANY DOUBLE CHARACTER e.g.: abcdde
+"ab|cd|pq|xq"		# ANY OF THESE PAIRS
+
+"(..).*\1"			# ANY DOUBLES THAT APPEAR AT LEAST TWICE e.g.: aabcdefgaa
+"(.).\1"			# ANY CHARACTER TWICE WITH ANOTHER CHARACTER IN BETWEEN e.g.: abcdefeghi (efe)
