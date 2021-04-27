@@ -12,7 +12,7 @@ From here, you can access all of the events (and the corresponding puzzles, lead
 
 [[2016]](https://adventofcode.com/2016) 5*
 
-[[2015]](https://adventofcode.com/2015) 10*
+`[[2015]](https://adventofcode.com/2015) 10*`
 
 ```
         .---_
