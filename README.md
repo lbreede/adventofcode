@@ -17,11 +17,3 @@ From here, you can access all of the events (and the corresponding puzzles, lead
 [[2015]](https://adventofcode.com/2015) 10*
 
 Total stars: 45*
-
-```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
