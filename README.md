@@ -2,7 +2,7 @@
 
 From here, you can access all of the events (and the corresponding puzzles, leaderboards, stats, etc) ever run on Advent of Code:
 
-[[2021]](https://adventofcode.com/2021) 2*
+[[2021]](https://adventofcode.com/2021) ![](https://img.shields.io/badge/stars%20⭐-2-yellow)
 
 [[2020]](https://adventofcode.com/2020) 13*
 
@@ -16,6 +16,6 @@ From here, you can access all of the events (and the corresponding puzzles, lead
 
 [[2015]](https://adventofcode.com/2015) 10*
 
-![test](https://img.shields.io/badge/stars%20⭐-12-yellow)
+
 
 Total stars: 45*
