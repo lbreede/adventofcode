@@ -1,3 +1,5 @@
+# --- Day 1: Sonar Sweep ---
+
 def list_from_file(filename):
 	with open (filename, "r") as fp:
 		return [int(x) for x in fp.read().split("\n")]
