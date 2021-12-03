@@ -1,6 +1,6 @@
 # --- Day 4: Security Through Obscurity ---
 
-with open("inputdata.txt", "r") as f:
+with open("input.txt", "r") as f:
 	line_list = f.read().split("\n")
 
 # line_list = ["aaaaa-bbb-z-y-x-123[abxyz]"]
