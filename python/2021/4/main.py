@@ -20,7 +20,8 @@ def get_boards(lst):
 		boards.append(board)
 	return boards
 
-def bingo(numbers, boards):
+def win_bingo(numbers, b):
+	boards = b[:]
 	for num in numbers:
 		for board_number, board in enumerate(boards):
 			cols_count = [0,0,0,0,0]
@@ -50,17 +51,19 @@ def bingo(numbers, boards):
 				accum_unmarked += int(k)
 
 	return accum_unmarked * int(num)
-			
+
 def main():
-	with open("input.txt", "r") as f:
+	with open("example.txt", "r") as f:
 		linelist = f.read().split("\n\n")
 
 	numbers = get_numbers(linelist)
 	boards = get_boards(linelist)
 
-	result1 = bingo(numbers, boards)
+	result_1 = win_bingo(numbers, boards)
+	result_2 = lose_bingo(numbers, boards)
 
-	print(f"Part 1: {result1}")
+	print(f"Part 1: {result_1}")
+	print(f"Part 2: {result_2}")
 
 
 if __name__ == "__main__":
