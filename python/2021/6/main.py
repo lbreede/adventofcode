@@ -21,42 +21,31 @@ def splitup_days(days):
 
 	return day_list
 
-DAYS = 80
-FILE = "example.txt"
+DAYS = 256
+FILENAME = "example"
+EXT = ".txt"
 
+day_list = splitup_days(DAYS)
+# day_list = [40]
+read_file = FILENAME + EXT
 
-
-
-
-day_list = splitup_days(80)
-day_list = [40]
-read_file = FILE
-
-for day in day_list:
+for i, day in enumerate(day_list):
 
 	with open(read_file, "r") as f:
 		ages = [int(x) for x in f.read().split(",")]
 
-	txt = ",".join( [str(x) for x in lanternfish(ages, day)] )
+	text = ",".join( [str(x) for x in lanternfish(ages, day)] )
 	
+
+	write_file = "_".join([FILENAME, str(DAYS) + "days", "batch" + str(i)])
+	write_file += EXT
+
+	print(write_file)	
+
 	with open(write_file, "w") as f:
-		
+		f.write(text)
 
+	read_file = write_file
 
-
-# ages1 = lanternfish(ages, b1)
-
-# with open("batch1.json", "w") as f:
-# 	json.dump(ages1, f)
-
-# with open("batch1.json", "r") as f:
-# 	ages1 = json.load(f)
-
-# ages2 = lanternfish(ages1, b2)
-# DAYS = 80
-# amount = len(lanternfish(ages, DAYS))
-
-
-# print(f"\nAfter {DAYS} days, there were {amount} lanternfish in the sea.\
-#  We're doomed!\n")
+print(len(ages))
 
