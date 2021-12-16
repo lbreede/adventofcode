@@ -2,7 +2,6 @@
 
 from aoc_helper import load_input
 import copy
-import tqdm
 
 def find_adjacent(pos, lst):
 	x, y = pos
@@ -60,7 +59,6 @@ def convert_to_string(lst):
 	return s
 
 def stablilize_chaos(lst):
-
 	i = 0
 	while True:
 		if i % 2 == 0:
@@ -76,10 +74,9 @@ def stablilize_chaos(lst):
 			return string.count("#")
 		else:
 			lst = copy.deepcopy(new_lst)
-
 		i += 1
 
-DIR = "example"
-layout = load_input(f"{DIR}/day_11.txt")
+dir_ = "input"
+layout = load_input(f"{dir_}/day_11.txt")
 layout = [list(x) for x in layout]
 print(stablilize_chaos(layout))
