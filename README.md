@@ -1,19 +1,4 @@
 # Advent of Code :christmas_tree:
 
-![](https://img.shields.io/github/repo-size/lbreede/advent-of-code)
-
-[[2021]](https://adventofcode.com/2021) `[#################.................................]` 17*
-
-[[2020]](https://adventofcode.com/2020) `[#####################.............................]` 21*
-
-[[2019]](https://adventofcode.com/2019) `[########..........................................]`  8*
-
-[[2018]](https://adventofcode.com/2018) `[######............................................]`  6*
-
-[[2017]](https://adventofcode.com/2017) `[##########........................................]` 10*
-
-[[2016]](https://adventofcode.com/2016) `[######............................................]`  6*
-
-[[2015]](https://adventofcode.com/2015) `[############......................................]` 12*
-
-Total stars: 80*
+![](https://img.shields.io/badge/total%20stars-80-yellow)
+![](https://img.shields.io/github/repo-size/lbreede/advent-of-code?logo=GitHub)
