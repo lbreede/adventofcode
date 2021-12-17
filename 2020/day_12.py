@@ -1,6 +1,7 @@
 # --- Day 12: Rain Risk ---
 
 from aoc_helper import load_input
+import logging
 
 def part_1(lst):
 
@@ -36,9 +37,12 @@ def part_2(lst, print_log=False):
 
 	for x in lst:
 		if print_log:
-			print("="*35)
-			print(f"Current Position: [ {north} | {east} ]")
-			print(f"Current Waypoint: [ {north_waypoint} | {east_waypoint} ]\n")
+			level = logging.DEBUG
+			fmt = "[%(levelname)s] %(asctime)s - %(message)s"
+			logging.basicConfig(level=level, format=fmt)
+			logging.info(f"Current Position: [ {north} | {east} ]")
+			logging.info(f"Current Waypoint: [ {north_waypoint} | " 
+				f"{east_waypoint} ]\n")
 		action, value = x
 
 		if   action == "N":	north_waypoint += value
@@ -63,10 +67,10 @@ def part_2(lst, print_log=False):
 				north_waypoint, east_waypoint = east_waypoint, -north_waypoint
 
 		if print_log:
-			print(f"Action: {action}, Value: {value}\n")
-			print(f"Current Position: [ {north} | {east} ]")
-			print(f"Current Waypoint: [ {north_waypoint} | {east_waypoint} ]")
-			print("="*35 + "\n")
+			logging.info(f"Action: {action}, Value: {value}\n")
+			logging.info(f"Current Position: [ {north} | {east} ]")
+			logging.info(f"Current Waypoint: [ {north_waypoint} | " 
+				f"{east_waypoint} ]\n\n")
 
 	return abs(east) + abs(north)
 
