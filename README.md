@@ -1,5 +1,7 @@
 # Advent of Code :christmas_tree:
 
+https://img.shields.io/github/repo-size/lbreede/advent-of-code
+
 [[2021]](https://adventofcode.com/2021) `[#################.................................]` 17*
 
 [[2020]](https://adventofcode.com/2020) `[#####################.............................]` 21*
