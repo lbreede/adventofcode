@@ -10,8 +10,6 @@ def find_earliest_time(time, ids):
 
 		time += 1
 
-
-
 subdir = "input"
 day = 13
 linelist = load_input(f"{subdir}/day_{day}.txt")
