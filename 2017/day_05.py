@@ -1,7 +1,7 @@
 # --- Day 5: A Maze of Twisty Trampolines, All Alike ---
 
 from aoc_helper import load_input
-linelist = load_input("day05_input.txt")
+linelist = load_input("input", 5)
 linelist = list(map(int, linelist))
 
 def find_exit(list_, strange_offset=False):

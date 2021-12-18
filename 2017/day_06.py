@@ -1,6 +1,6 @@
 # --- Day 6: Memory Reallocation ---
 
-with open("day06_input.txt", "r") as f:
+with open("day_06.txt") as f:
 		text = f.read()
 
 lst = list(map(int, text.split()))

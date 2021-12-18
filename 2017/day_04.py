@@ -1,7 +1,7 @@
 # --- Day 4: High-Entropy Passphrases ---
 
 from aoc_helper import load_input
-passphrase_list = load_input("day04_input.txt")
+passphrase_list = load_input("input", 4)
 passphrase_list = [x.split() for x in passphrase_list]
 
 def count_valid(lst, include_anagrams=0):
