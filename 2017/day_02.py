@@ -1,7 +1,7 @@
 # --- Day 2: Corruption Checksum ---
 
-with open("inputdata.txt", "r") as f:
-	line_list = f.read().split("\n")
+from aoc_helper import load_input
+line_list = load_input("input", 2)
 
 checksum_part_one = 0
 checksum_part_two = 0
@@ -18,4 +18,3 @@ for line in line_list:
 
 print(checksum_part_one)
 print(checksum_part_two)
-
