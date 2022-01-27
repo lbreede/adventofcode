@@ -9,12 +9,12 @@ print(freq_sum)
 freq = 0
 freq_list = []
 i = 0
-while(True):
-	freq += adjustment_list[i % len(adjustment_list)]
-	if freq in freq_list:
-		break
-	else:
-		freq_list.append(freq)
-		i += 1
-	
+while True:
+    freq += adjustment_list[i % len(adjustment_list)]
+    if freq in freq_list:
+        break
+    else:
+        freq_list.append(freq)
+        i += 1
+
 # print(freq) # 73364

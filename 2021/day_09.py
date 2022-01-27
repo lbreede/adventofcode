@@ -2,53 +2,63 @@
 
 import aoc_helper
 
+
 def gen_heightmap(filename):
-	heightmap = aoc_helper.load_input(filename)
-	return [list(map(int, x)) for x in heightmap]
+    heightmap = aoc_helper.load_input(filename)
+    return [list(map(int, x)) for x in heightmap]
+
 
 def find_adjacent(pos, heightmap):
-	xmax = len(heightmap[0])-1
-	ymax = len(heightmap)-1
+    xmax = len(heightmap[0]) - 1
+    ymax = len(heightmap) - 1
 
-	adj = []
+    adj = []
 
-	if pos[1] != 0:		adj.append([pos[0], pos[1]-1])
-	if pos[1] != ymax:	adj.append([pos[0], pos[1]+1])
-	if pos[0] != 0:		adj.append([pos[0]-1, pos[1]])
-	if pos[0] != xmax:	adj.append([pos[0]+1, pos[1]])
+    if pos[1] != 0:
+        adj.append([pos[0], pos[1] - 1])
+    if pos[1] != ymax:
+        adj.append([pos[0], pos[1] + 1])
+    if pos[0] != 0:
+        adj.append([pos[0] - 1, pos[1]])
+    if pos[0] != xmax:
+        adj.append([pos[0] + 1, pos[1]])
 
-	return adj
+    return adj
+
 
 def read_value(pos, heightmap):
-	return heightmap[pos[1]][pos[0]]
+    return heightmap[pos[1]][pos[0]]
+
 
 def batch_read_values(pos, heightmap):
-	lst = []
-	for p in pos:
-		lst.append(read_value(p, heightmap))
-	return lst
+    lst = []
+    for p in pos:
+        lst.append(read_value(p, heightmap))
+    return lst
+
 
 def find_valleys(heightmap):
-	valleys = []
-	for y in range(len(heightmap)):
-		for x in range(len(heightmap[0])):
-			val = read_value([x, y], heightmap)
-			
-			adjacent = find_adjacent([x, y], heightmap)
-			for adj in adjacent:
-				adjval = read_value(adj, heightmap)
-				if adjval <= val:
-					break
-			else:
-				valleys.append([x, y])
-	return valleys
+    valleys = []
+    for y in range(len(heightmap)):
+        for x in range(len(heightmap[0])):
+            val = read_value([x, y], heightmap)
+
+            adjacent = find_adjacent([x, y], heightmap)
+            for adj in adjacent:
+                adjval = read_value(adj, heightmap)
+                if adjval <= val:
+                    break
+            else:
+                valleys.append([x, y])
+    return valleys
+
 
 def risklevels(lst):
-	return [x + 1 for x in lst]
+    return [x + 1 for x in lst]
+
 
 def find_basins(valleys, heightmap):
-	pass
-
+    pass
 
 
 heightmap = gen_heightmap("day09_example.txt")

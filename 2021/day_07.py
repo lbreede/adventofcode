@@ -2,29 +2,31 @@
 
 import aoc_helper
 
+
 def align_submarines(data, constant_fuel=True):
 
-	minpos = min(data)
-	maxpos = max(data)
+    minpos = min(data)
+    maxpos = max(data)
 
-	minfuel = float("inf")
+    minfuel = float("inf")
 
-	for i in range(minpos, maxpos+1):
-		fuel = 0
-		for pos in data:
-			dist = abs(pos - i)
+    for i in range(minpos, maxpos + 1):
+        fuel = 0
+        for pos in data:
+            dist = abs(pos - i)
 
-			if constant_fuel:
-				fuel += dist
+            if constant_fuel:
+                fuel += dist
 
-			else:
-				for j in range(1, dist+1):
-					fuel += j
+            else:
+                for j in range(1, dist + 1):
+                    fuel += j
 
-		if fuel < minfuel:
-			minfuel = fuel
+        if fuel < minfuel:
+            minfuel = fuel
 
-	return minfuel
+    return minfuel
+
 
 data = aoc_helper.load_input("day07_input.txt", separator=",")
 data = [int(x) for x in data]
