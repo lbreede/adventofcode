@@ -1,27 +1,16 @@
 # --- Day 1: Inverse Captcha ---
 
-f = open("input.txt", "r").read()
-# f = "91212129"
+with open("input/day_01.txt") as f:
+    data = list(map(int, f.read()))
 
-def solveCapcha(input, part):
-	digit_amount = len(f)
-	value = []
+ndigits = len(data)
+answer_1 = answer_2 = 0
+for i, a in enumerate(data):
+    b = data[(i + 1) % ndigits]
+    c = data[(i + ndigits // 2) % ndigits]
+    if a == b:
+        answer_1 += a
+    if a == c:
+        answer_2 += a
 
-	for x in range(digit_amount):
-		curr_digit = f[x]
-
-		if part == 1:
-			offset = x + 1
-		elif part == 2:
-			offset = x + digit_amount / 2
-
-		next_digit = f[offset % digit_amount]
-
-		if curr_digit == next_digit:
-			value.append(int(curr_digit))
-
-	return sum(value)
-
-
-print solveCapcha("input.txt", 1)
-print solveCapcha("input.txt", 2)
+print(f"Part 1: {answer_1}\nPart 2: {answer_2}")
