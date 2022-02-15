@@ -1,4 +1,6 @@
 # --- Day 1: No Time for a Taxicab ---
+
+
 DIR_TABLE = {0: (0, -1), 1: (1, 0), 2: (0, 1), 3: (-1, 0)}
 compass = 0
 
@@ -20,7 +22,7 @@ class Vector2:
         return Vector2((self.x + other.x, self.y + other.y))
 
     def __str__(self):
-        return f"{self.x} x {self.y}"
+        return f"[{self.x}, {self.y}]"
 
 
 def turn_compass(turn):
