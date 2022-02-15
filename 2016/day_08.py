@@ -78,7 +78,7 @@ def main():
     print(f"Part 1: {a}")
 
     print("Part 2:")
-    draw_screen(on = "█", off = " ")
+    draw_screen(on="█", off="░")
 
 
 if __name__ == "__main__":
