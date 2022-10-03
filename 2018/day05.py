@@ -1,40 +1,53 @@
 # --- Day 5: Alchemical Reduction ---
-
 import re
 import os
 from tqdm import trange
 
 
+ALPHABET = "abcdefghijklmnopqrstuvwxyz"
+
+
 def create_regex():
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
     regex = ""
-    for char in alphabet:
+    for char in ALPHABET:
         regex += f"{char}{char.upper()}|{char.upper()}{char}|"
-    return regex[:-1]
+    return re.compile(regex[:-1])
 
 
-def reduce_(s, max_depth, depth=0):
+def initial_reduction(s, letter):
+    regex = re.compile(f"[{letter}{letter.upper()}]")
+    s = re.sub(regex, "", s)
+    return s
+
+
+def recursive_reduction(s):
     regex = create_regex()
     result = re.search(regex, s)
-    if result and depth < max_depth:
-        start, end = result.span()
-        return reduce_(s[:start] + s[end:], max_depth, depth + 1)
+    while result:
+        s = re.sub(regex, "", s, 1)
+        result = re.search(regex, s)
     return s
 
 
 def main():
     with open("day05_input.txt") as fp:
         string = fp.read()
-    string = "dabAcCaCBAcCcaDA"
+    # string = "dabAcCaCBAcCcaDA"
 
-    for i in trange(30):
-        string = reduce_(string, max_depth=900)
+    reduced_string = recursive_reduction(string)
+    print(f"Part 1: {len(reduced_string)}")
 
-        regex = create_regex()
-        if not re.search(regex, string):
-            break
+    smallest = float("inf")
 
-    print(string, "->", len(string))
+    for i in trange(len(ALPHABET)):
+        letter = ALPHABET[i]
+        reduced_string = initial_reduction(string, letter)
+        reduced_string = recursive_reduction(reduced_string)
+
+        if len(reduced_string) < smallest:
+            smallest = len(reduced_string)
+
+    print(f"Part 2: {smallest}")
 
 
 if __name__ == "__main__":

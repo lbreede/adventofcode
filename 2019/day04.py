@@ -2,8 +2,6 @@
 
 import re
 
-PUZZLE_INPUT = "137683-596253"
-
 
 def criteria1(password):
     if len(str(password)) == 6:
@@ -14,28 +12,24 @@ def criteria1(password):
 
 def criteria2(password, puzzle_input):
     min_, max_ = [int(x) for x in puzzle_input.split("-")]
-    if password >= min_ and password <= max_:
+    if min_ <= password <= max_:
         return True
-    else:
-        return False
+    return False
 
 
 def criteria3(password):
-    regex = "(\d)\\1"
-    p = re.compile(regex)
-    if re.search(p, str(password)):
+    regex = re.compile(r"(\d)\1")
+    if re.search(regex, str(password)):
         return True
-    else:
-        return False
+    return False
 
 
 def criteria4(password):
     a, b, c, d, e, f = [int(x) for x in str(password)]
 
-    if a <= b and b <= c and c <= d and d <= e and e <= f:
+    if a <= b <= c <= d <= e <= f:
         return True
-    else:
-        return False
+    return False
 
 
 def has_exact_double(password):
@@ -43,10 +37,10 @@ def has_exact_double(password):
     multiple and checking if at least one of them is of length 2
 
     Args:
-            password (int): the password the match the criteria to
+        password (int): the password the match the criteria to
 
     Returns:
-            The return value. True for an exact match, False otherwise
+        The return value. True for an exact match, False otherwise
 
     """
     return any(
@@ -54,7 +48,8 @@ def has_exact_double(password):
     )
 
 
-start, end = [int(x) for x in PUZZLE_INPUT.split("-")]
+puzzle_input = "137683-596253"
+start, end = list(map(int, puzzle_input.split("-")))
 
 match1 = 0
 match2 = 0
