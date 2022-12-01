@@ -1,8 +1,16 @@
 import os
+from pathlib import Path
 
-folders = next(os.walk("day/"))[1]
+root = "day"
+
+folders = next(os.walk(root))[1]
+print(folders)
 
 for i in range(1, 26):
-    if i in folders:
+    if str(i) in folders:
         continue
-    os.mkdir(str(i))
+    path = os.path.join(root, str(i))
+    os.mkdir(path)
+    path = os.path.join(path, "main.py")
+    print(path)
+    Path(path).touch()
