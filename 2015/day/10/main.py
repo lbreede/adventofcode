@@ -1,7 +1,4 @@
 # --- Day 10: Elves Look, Elves Say ---
-from tqdm import trange
-
-
 def look_and_say(puzzle, iterations):
     for i in range(iterations):
         curr_char = temp_puzzle_input = ""
