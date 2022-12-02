@@ -13,14 +13,14 @@ with open("input.txt") as fp:
         distances[ROUTE.format(start=start, end=end)] = int(dist)
         distances[ROUTE.format(start=end, end=start)] = int(dist)
 
-shortest_distance = None
+shortest_distance = float("inf")
 longest_distance = 0
 
 for route in list(permutations(locations, r=len(locations))):
     distance = 0
     for i in range(len(route) - 1):
         distance += distances[ROUTE.format(start=route[i], end=route[i + 1])]
-    if shortest_distance is None or distance < shortest_distance:
+    if distance < shortest_distance:
         shortest_distance = distance
     if distance > longest_distance:
         longest_distance = distance
