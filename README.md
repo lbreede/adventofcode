@@ -5,7 +5,7 @@
 ![](https://img.shields.io/github/repo-size/lbreede/advent-of-code?logo=GitHub)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-## Visualisations
+## Visualizations
 
 ### 2022
 
@@ -13,4 +13,4 @@
 
 Using second motions example:
 
-![Rope Bridge Example 2](https://raw.githubusercontent.com/lbreede/advent-of-code/main/2022/day/9/rope_bridge_example2.gif)
+![Visualization of 2022 Day 9 (Part 2)](https://raw.githubusercontent.com/lbreede/advent-of-code/main/2022/day/9/rope_bridge_example2.gif)
