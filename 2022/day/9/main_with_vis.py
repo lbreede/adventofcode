@@ -1,8 +1,26 @@
 # --- Day 9: Rope Bridge ---
 import time
 
-WIDTH = 100
-HEIGHT = 100
+WIDTH = 32
+HEIGHT = 32
+HWIDTH = WIDTH // 2
+HHEIGHT = HEIGHT // 2
+
+
+class bcolors:
+    HEADER = "\033[95m"
+    OKBLUE = "\033[94m"
+    OKCYAN = "\033[96m"
+    OKGREEN = "\033[92m"
+    WARNING = "\033[93m"
+    FAIL = "\033[91m"
+    ENDC = "\033[0m"
+    BOLD = "\033[1m"
+    UNDERLINE = "\033[4m"
+
+
+def bold(string):
+    return bcolors.BOLD + string + bcolors.ENDC
 
 
 def move(pos, direction):
@@ -18,7 +36,7 @@ def move(pos, direction):
 
 
 def follow(tail, head, direction):
-    if is_adjacent(tail, head):
+    if all([tail[i] - 1 <= head[i] <= tail[i] + 1 for i in range(2)]):
         return tail
     (tail_x, tail_y), (head_x, head_y) = tail, head
     if tail_x == head_x:
@@ -31,27 +49,24 @@ def follow(tail, head, direction):
     return tail
 
 
-def is_adjacent(tail, head):
-    return all([tail[i] - 1 <= head[i] <= tail[i] + 1 for i in range(2)])
-
-
 def init_grid(visited={}):
     grid = []
-    for i in range(-HEIGHT // 2, HEIGHT // 2):
+    for i in range(-HHEIGHT, HHEIGHT):
         row = []
-        for j in range(-WIDTH // 2, WIDTH // 2):
+        for j in range(-HWIDTH, HWIDTH):
             if (j, i) not in visited:
-                row.append(".")
+                row.append(" .")
             else:
-                row.append("#")
+                row.append(bcolors.OKBLUE + bold(" #"))
         grid.append(row)
     return grid
 
 
 def render_grid(grid):
-    print("=" * WIDTH)
+    border = bcolors.WARNING + "=" * WIDTH * 2 + bcolors.ENDC
+    print(border)
     print("\n".join(["".join(row) for row in grid[::-1]]))
-    print("=" * WIDTH, "\n")
+    print(border + "\n")
 
 
 head = [0, 0]
@@ -66,49 +81,46 @@ seven = head.copy()
 eight = head.copy()
 nine = head.copy()
 
+visited_one = {tuple(head)}
+visited_two = {tuple(head)}
+
 grid = init_grid()
 
-part_one = {tuple(head)}
-part_two = {tuple(head)}
-
-
-with open("input.txt") as fp:
+with open("example2.txt") as fp:
     for motion in fp:
-        d, n = [int(x) if x.isnumeric() else x for x in motion.rstrip().split()]
-        for i in range(n):
+        direction, steps = motion.rstrip().split()
+        for _ in range(int(steps)):
 
-            head = move(head, d)
+            head = move(head, direction)
 
-            tail = follow(tail, head, d)
-            part_one.add(tuple(tail))
+            tail = follow(tail, head, direction)
+            visited_one.add(tuple(tail))
 
-            one = follow(one, head, d)
-            two = follow(two, one, d)
-            three = follow(three, two, d)
-            four = follow(four, three, d)
-            five = follow(five, four, d)
-            six = follow(six, five, d)
-            seven = follow(seven, six, d)
-            eight = follow(eight, seven, d)
-            nine = follow(nine, eight, d)
-            part_two.add(tuple(nine))
+            one = follow(one, head, direction)
+            two = follow(two, one, direction)
+            three = follow(three, two, direction)
+            four = follow(four, three, direction)
+            five = follow(five, four, direction)
+            six = follow(six, five, direction)
+            seven = follow(seven, six, direction)
+            eight = follow(eight, seven, direction)
+            nine = follow(nine, eight, direction)
+            visited_two.add(tuple(nine))
 
-            # grid = init_grid(visited=part_two)
-            # grid[HEIGHT // 2][WIDTH // 2] = "s"
-            # grid[nine[1] + HEIGHT // 2][nine[0] + WIDTH // 2] = "9"
-            # grid[eight[1] + HEIGHT // 2][eight[0] + WIDTH // 2] = "8"
-            # grid[seven[1] + HEIGHT // 2][seven[0] + WIDTH // 2] = "7"
-            # grid[six[1] + HEIGHT // 2][six[0] + WIDTH // 2] = "6"
-            # grid[five[1] + HEIGHT // 2][five[0] + WIDTH // 2] = "5"
-            # grid[four[1] + HEIGHT // 2][four[0] + WIDTH // 2] = "4"
-            # grid[three[1] + HEIGHT // 2][three[0] + WIDTH // 2] = "3"
-            # grid[two[1] + HEIGHT // 2][two[0] + WIDTH // 2] = "2"
-            # grid[one[1] + HEIGHT // 2][one[0] + WIDTH // 2] = "1"
-            # grid[head[1] + HEIGHT // 2][head[0] + WIDTH // 2] = "H"
-            # render_grid(grid)
-            # time.sleep(0.001)
+            grid = init_grid(visited=visited_two)
+            grid[HHEIGHT][HWIDTH] = bcolors.FAIL + bold(" s")
+            grid[nine[1] + HHEIGHT][nine[0] + HWIDTH] = bcolors.OKCYAN + bold(" 9")
+            grid[eight[1] + HHEIGHT][eight[0] + HWIDTH] = bcolors.OKCYAN + bold(" 8")
+            grid[seven[1] + HHEIGHT][seven[0] + HWIDTH] = bcolors.OKCYAN + bold(" 7")
+            grid[six[1] + HHEIGHT][six[0] + HWIDTH] = bcolors.OKCYAN + bold(" 6")
+            grid[five[1] + HHEIGHT][five[0] + HWIDTH] = bcolors.OKCYAN + bold(" 5")
+            grid[four[1] + HHEIGHT][four[0] + HWIDTH] = bcolors.OKCYAN + bold(" 4")
+            grid[three[1] + HHEIGHT][three[0] + HWIDTH] = bcolors.OKCYAN + bold(" 3")
+            grid[two[1] + HHEIGHT][two[0] + HWIDTH] = bcolors.OKCYAN + bold(" 2")
+            grid[one[1] + HHEIGHT][one[0] + HWIDTH] = bcolors.OKCYAN + bold(" 1")
+            grid[head[1] + HHEIGHT][head[0] + HWIDTH] = bcolors.OKGREEN + bold(" H")
 
+            render_grid(grid)
+            time.sleep(0.1)
 
-part_one = len(part_one)
-part_two = len(part_two)
-print("Part 1:", part_one, "\nPart 2:", part_two)
+# print("Part 1:", len(visited_one), "\nPart 2:", len(visited_two))
