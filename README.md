@@ -1,4 +1,7 @@
 # Advent of Code :christmas_tree:
+
+![Rope Bridge Example 2](https://raw.githubusercontent.com/lbreede/advent-of-code/main/2022/day/9/rope_bridge_example2.gif)
+
 <!-- 
 ![](https://img.shields.io/badge/total%20stars-108-yellow)
 ![](https://img.shields.io/github/repo-size/lbreede/advent-of-code?logo=GitHub)
