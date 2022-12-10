@@ -3,7 +3,6 @@
 
 def slopecheck(right, down):
     found = i = j = 0
-
     while True:
         try:
             found += forest[i][j]
