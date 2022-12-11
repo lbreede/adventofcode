@@ -2,7 +2,7 @@
 
 import re
 
-with open("input.txt", "r") as f:
+with open("input/day_04.txt", "r") as f:
     line_list = [line.replace("\n", " ") for line in f.read().split("\n\n")]
 
 passport_list = []
