@@ -67,7 +67,6 @@ print(f"Part 1: {result1}")
 result2 = 0
 
 for entry in data:
-
     one = ""
     four = ""
     seven = ""
@@ -89,7 +88,6 @@ for entry in data:
     i = 0
 
     while len(a + b + c + d + e + f) < 6:
-
         p = entry[i % 14]
 
         # FIND THE EASY ONES

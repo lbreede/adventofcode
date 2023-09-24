@@ -45,7 +45,6 @@ def draw_grid(data):
 
 
 def draw_lines(grid, data, include_diagonal=0):
-
     for d in data:
         pt1, pt2 = d
         if is_horizontal(pt1, pt2):
@@ -67,7 +66,6 @@ def draw_lines(grid, data, include_diagonal=0):
             and not is_vertical(pt1, pt2)
             and include_diagonal
         ):
-
             x1, y1 = pt1
             x2, y2 = pt2
 
@@ -111,7 +109,6 @@ def print_grid(grid):
 
 
 def main():
-
     data = aoc_helper.load_input("day05_input.txt")
     data = process_data(data)
 

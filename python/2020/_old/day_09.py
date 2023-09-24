@@ -21,7 +21,6 @@ def part_1(nums, preample):
 
 
 def part_2(nums, sum_):
-
     for i in trange(len(nums), desc="Calculating Part 2"):
         for j in range(len(nums)):
             terms = nums[i:j]

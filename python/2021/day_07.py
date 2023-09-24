@@ -4,7 +4,6 @@ import aoc_helper
 
 
 def align_submarines(data, constant_fuel=True):
-
     minpos = min(data)
     maxpos = max(data)
 

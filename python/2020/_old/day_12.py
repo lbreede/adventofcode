@@ -5,7 +5,6 @@ import logging
 
 
 def part_1(lst):
-
     north = 0
     east = 0
     curr_dir = 1
@@ -41,7 +40,6 @@ def part_1(lst):
 
 
 def part_2(lst, print_log=False):
-
     north = 0
     east = 0
     north_waypoint = 1

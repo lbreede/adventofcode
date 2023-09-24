@@ -1,5 +1,6 @@
 # --- Day 6: Custom Customs ---
 
+
 def main():
     part_one = part_two = 0
 
@@ -14,6 +15,7 @@ def main():
                     part_two += 1
 
     print("Part 1:", part_one, "\nPart 2:", part_two)
+
 
 if __name__ == "__main__":
     main()

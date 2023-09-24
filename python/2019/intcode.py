@@ -72,7 +72,6 @@ class IntcodeComputer:
         outputs = []
 
         while True:
-
             opcode = self.program[i]
             opcode, mode1, mode2, mode3 = self._expand_opcode(self.program[i])
             modes = [mode1, mode2, mode3]
@@ -81,7 +80,6 @@ class IntcodeComputer:
                 break
 
             if opcode in (1, 2, 7, 8):
-
                 params = self.program[i + 1 : i + 4]
                 param1, param2, param3 = params
                 vals = self._find_vals(params, modes, self.program)
@@ -99,7 +97,6 @@ class IntcodeComputer:
                 i += 4
 
             elif opcode in (3, 4):
-
                 param1 = self.program[i + 1]
                 val1 = self._find_val(param1, mode1, self.program)
 
@@ -111,7 +108,6 @@ class IntcodeComputer:
                 i += 2
 
             elif opcode in (5, 6):
-
                 params = self.program[i + 1 : i + 3]
                 param1, param2 = params
                 vals = self._find_vals(params, modes, self.program)
@@ -150,10 +146,8 @@ class IntcodeComputer:
         verb_start: int = 0,
         verb_stop: int = 99,
     ):
-
         for i in range(noun_start, noun_stop + 1):
             for j in range(verb_start, verb_stop + 1):
-
                 self.run(noun=i, verb=j)
 
                 if self.output() == output:

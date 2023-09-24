@@ -10,15 +10,12 @@ def get_val(val, dic):
 
 
 def solve(lines):
-
     signals = {}
 
     while True:
-
         lines_removed = 0
 
         for i, line in enumerate(lines.copy()):
-
             z, _, *xy = line.split(" ")[::-1]
             xy.reverse()
 

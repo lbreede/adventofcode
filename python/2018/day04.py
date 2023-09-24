@@ -24,7 +24,6 @@ def process_data(file):
             sleep_time = minute
 
         elif "wakes up" in description:
-
             if date != curr_date:
                 curr_date = date
 

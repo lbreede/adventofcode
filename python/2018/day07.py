@@ -20,7 +20,6 @@ pprint(instructions)
 done = []
 
 for letter in "ABCABDE":
-
     if letter in instructions:
         lst = instructions[letter]
         for y in lst:

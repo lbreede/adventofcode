@@ -46,7 +46,6 @@ with open("input.txt") as fp:
     for motion in fp:
         direction, steps = motion.rstrip().split()
         for _ in range(int(steps)):
-
             head = move(head, direction)
 
             tail = follow(tail, head, direction)

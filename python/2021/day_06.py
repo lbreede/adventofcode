@@ -35,7 +35,6 @@ day_list = splitup_days(DAYS)
 read_file = "day06_" + FILENAME + EXT
 
 for i, day in enumerate(day_list):
-
     ages = aoc_helper.load_input(read_file, separator=",")
     ages = [int(x) for x in ages]
 

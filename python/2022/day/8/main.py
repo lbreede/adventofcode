@@ -18,7 +18,6 @@ with open("input.txt") as fp:
 nvisible = maxdist = 0
 for i, row in enumerate(trees):
     for j, tree in enumerate(row):
-
         up, dn = [], []
         for k, x in enumerate(trees):
             if k < i:

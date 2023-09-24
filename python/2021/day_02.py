@@ -4,7 +4,6 @@ import aoc_helper
 
 
 def drive(lst, use_aim=0):
-
     horizontal = 0
     depth = 0
     aim = 0

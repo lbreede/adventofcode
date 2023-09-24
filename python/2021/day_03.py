@@ -64,7 +64,6 @@ def calc_rating(lst, typ):
     tmp_lst = []
 
     for i in range(len(lst[0])):
-
         if i > 0:
             lst = tmp_lst[:]
             tmp_lst = []

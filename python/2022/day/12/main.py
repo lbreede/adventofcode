@@ -65,7 +65,7 @@ heightfield = tuple(tuple(lowercase.index(y) for y in x) for x in heightfield)
 pos = (0, 1)  # start
 visited = [(0, 0), pos]
 
-for i in range()
+# for i in range()
 while True:
     pos = move(pos)
     if pos is None or pos == end:

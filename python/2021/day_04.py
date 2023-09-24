@@ -1,75 +1,89 @@
 # --- Day 4: Giant Squid ---
 
-import aoc_helper
+from pprint import pprint
+from typing import Optional
 
 
-def get_numbers(lst):
-    return lst[0].split(",")
+class BingoBoard:
+    def __init__(self, data: str, ident: Optional[int] = None) -> None:
+        self.numbers = self._get_board(data)
+        self._truth = [[False for _ in range(5)] for _ in range(5)]
+        self.ident = ident
+        self._last_guessed = None
+        self.score = 0
+
+    @staticmethod
+    def _get_board(data: str) -> list[list[int]]:
+        return [[int(num) for num in row.split()] for row in data.splitlines()]
+
+    def check_number(self, number: int) -> None:
+        for i, row in enumerate(self.numbers):
+            if number in row:
+                print(f"Found {number} in row {i+1}")
+                self._truth[i][row.index(number)] = True
+        self._last_guessed = number
+
+    def check_rows(self) -> bool:
+        for row in self._truth:
+            if all(row):
+                return True
+        return False
+
+    def check_columns(self) -> bool:
+        for i in range(5):
+            if all([row[i] for row in self._truth]):
+                return True
+        return False
+
+    # def check_diagonals(self) -> bool:
+    #     if all([self._truth[i][i] for i in range(5)]):
+    #         return True
+    #     if all([self._truth[i][4-i] for i in range(5)]):
+    #         return True
+    #     return False
+
+    def _check_bingo(self) -> bool:
+        return self.check_rows() or self.check_columns()  # or self.check_diagonals()
+
+    def get_score(self) -> int:
+        if self._check_bingo():
+            score = 0
+            pprint(self.numbers)
+            pprint(self._truth)
+            for i, row in enumerate(self.numbers):
+                for j, num in enumerate(row):
+                    if not self._truth[i][j]:
+                        print(num)
+                        score += num
+            return score * self._last_guessed
+        return 0
 
 
-def get_boards(lst):
-
-    raw_boards = [x.split("\n") for x in lst[1:]]
-
-    boards = []
-    for x in raw_boards:
-        board = []
-        for y in x:
-            row = {}
-            for z in y.split():
-                row[z] = 0
-                # board.append(y.split())
-            board.append(row)
-
-        boards.append(board)
-    return boards
+def get_numbers(data: str) -> list[int]:
+    return [int(num) for num in data.split("\n\n")[0].split(",")]
 
 
-def win_bingo(numbers, b):
-    boards = b[:]
-    for num in numbers:
-        for board_number, board in enumerate(boards):
-            cols_count = [0, 0, 0, 0, 0]
-            for row in board:
-                if num in row:
-                    row[num] = 1
-                    if sum(row.values()) == 5:
-                        winning_board = board_number
-                        break
-                for i, val in enumerate(row.values()):
-                    cols_count[i] += val
-            else:
-                continue
-            break
+def get_bingo_boards(data: str) -> list[BingoBoard]:
+    return [BingoBoard(board, i + 1) for i, board in enumerate(data.split("\n\n")[1:])]
 
-            if 5 in cols_count:
-                winning_board = board_number
+
+def main() -> None:
+    with open("day04_input.txt", encoding="utf-8") as fp:
+        data = fp.read()
+
+    numbers = get_numbers(data)
+    boards = get_bingo_boards(data)
+
+    for number in numbers:
+        for board in boards:
+            board.check_number(number)
+            score = board.get_score()
+            if score:
+                print(f"Board {board.ident} has bingo with score {score}")
                 break
         else:
             continue
         break
-
-    accum_unmarked = 0
-    for row in boards[winning_board]:
-        for k, v in row.items():
-            if v == 0:
-                accum_unmarked += int(k)
-
-    return accum_unmarked * int(num)
-
-
-def main():
-
-    linelist = aoc_helper.load_input("day04_input.txt", separator="\n\n")
-
-    numbers = get_numbers(linelist)
-    boards = get_boards(linelist)
-
-    result_1 = win_bingo(numbers, boards)
-    # result_2 = lose_bingo(numbers, boards)
-
-    print(f"Part 1: {result_1}")
-    # print(f"Part 2: {result_2}")
 
 
 if __name__ == "__main__":
