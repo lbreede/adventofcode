@@ -1,5 +1,8 @@
 # --- Day 2: Corruption Checksum ---
 
+import time
+
+
 Spreadsheet = list[list[int]]
 
 
@@ -26,14 +29,19 @@ def main() -> None:
     assert checksum == 18
 
     spreadsheet = parse_spreadsheet("day02_input.txt")
+
+    start = time.time()
     checksum = part_one(spreadsheet)
-    print("Part 1:", checksum)
+    duration = time.time() - start
+    print(f"Part 1: {checksum:,} after {duration:.3f} seconds.")
 
     checksum = part_two(parse_spreadsheet("day02_example02.txt"))
     assert checksum == 9
 
+    start = time.time()
     checksum = part_two(spreadsheet)
-    print("Part 2:", checksum)
+    duration = time.time() - start
+    print(f"Part 2: {checksum:,} after {duration:.3f} seconds.")
 
 
 if __name__ == "__main__":

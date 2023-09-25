@@ -1,4 +1,4 @@
 [MASTER]
 disable=missing-function-docstring, missing-class-docstring, missing-module-docstring
 [FORMAT]
-good-names=i, a, b, fp, n
+good-names=i, a, b, fp, n, j

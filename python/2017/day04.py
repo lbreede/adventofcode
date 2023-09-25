@@ -1,3 +1,6 @@
+import time
+
+
 def part_one(passphrase: str) -> bool:
     words = passphrase.split()
     return len(words) == len(set(words))
@@ -16,8 +19,10 @@ def main() -> None:
     with open("day04_input.txt", encoding="utf-8") as fp:
         passphrases = fp.read().splitlines()
 
+    start = time.time()
     solution = sum([part_one(p) for p in passphrases])
-    print("Part 1:", solution)
+    duration = time.time() - start
+    print(f"Part 1: {solution:,} after {duration:.3f} seconds.")
 
     assert part_two("abcde fghij")
     assert not part_two("abcde xyz ecdab")
@@ -25,8 +30,10 @@ def main() -> None:
     assert part_two("iiii oiii ooii oooi oooo")
     assert not part_two("oiii ioii iioi iiio")
 
+    start = time.time()
     solution = sum([part_two(p) for p in passphrases])
-    print("Part 2:", solution)
+    duration = time.time() - start
+    print(f"Part 2: {solution:,} after {duration:.3f} seconds.")
 
 
 if __name__ == "__main__":

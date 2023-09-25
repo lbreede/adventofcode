@@ -1,5 +1,6 @@
 # --- Day 1: Inverse Captcha ---
 
+import time
 from typing import Callable
 
 
@@ -22,40 +23,29 @@ def solve_captcha(captcha: str, func: Callable[[int, int], str]) -> int:
 
 
 def main():
-    solution = part_one("1122")
-    assert solution == 3
-
-    solution = part_one("1111")
-    assert solution == 4
-
-    solution = part_one("1234")
-    assert solution == 0
-
-    solution = part_one("91212129")
-    assert solution == 9
+    assert part_one("1122") == 3
+    assert part_one("1111") == 4
+    assert part_one("1234") == 0
+    assert part_one("91212129") == 9
 
     with open("day01_input.txt", encoding="utf-8") as fp:
         captcha = fp.read().strip()
+
+    start = time.time()
     solution = part_one(captcha)
-    print("Part 1:", solution)
+    duration = time.time() - start
+    print(f"Part 1: {solution:,} after {duration:.3f} seconds.")
 
-    solution = part_two("1212")
-    assert solution == 6
+    assert part_two("1212") == 6
+    assert part_two("1221") == 0
+    assert part_two("123425") == 4
+    assert part_two("123123") == 12
+    assert part_two("12131415") == 4
 
-    solution = part_two("1221")
-    assert solution == 0
-
-    solution = part_two("123425")
-    assert solution == 4
-
-    solution = part_two("123123")
-    assert solution == 12
-
-    solution = part_two("12131415")
-    assert solution == 4
-
+    start = time.time()
     solution = part_two(captcha)
-    print("Part 2:", solution)
+    duration = time.time() - start
+    print(f"Part 2: {solution:,} after {duration:.3f} seconds.")
 
 
 if __name__ == "__main__":
