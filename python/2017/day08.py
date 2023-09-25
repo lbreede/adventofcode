@@ -1,18 +1,18 @@
 # --- Day 8: I Heard You Like Registers ---
 
 
-def passed(lhs: int, cond: str, rhs: int) -> bool:
-    if cond == ">":
+def passed(lhs: int, symbol: str, rhs: int) -> bool:
+    if symbol == ">":
         return lhs > rhs
-    if cond == "<":
+    if symbol == "<":
         return lhs < rhs
-    if cond == ">=":
+    if symbol == ">=":
         return lhs >= rhs
-    if cond == "<=":
+    if symbol == "<=":
         return lhs <= rhs
-    if cond == "==":
+    if symbol == "==":
         return lhs == rhs
-    if cond == "!=":
+    if symbol == "!=":
         return lhs != rhs
     return False
 
@@ -22,17 +22,15 @@ def modify_registers(filename: str) -> tuple[int, int]:
     current_highest = all_time_highest = 0
     with open(filename, encoding="utf-8") as fp:
         for line in fp:
-            name, operation, value, _, lhs, cond, rhs = line.split()
+            name, operation, value, _, lhs, symbol, rhs = line.split()
 
-            if passed(registers.get(lhs, 0), cond, int(rhs)):
-                continue
-            
-            val = int(value) if operation == "inc" else -int(value)
-            registers[name] = registers.get(name, 0) + val
+            if passed(registers.get(lhs, 0), symbol, int(rhs)):
+                val = int(value) if operation == "inc" else -int(value)
+                registers[name] = registers.get(name, 0) + val
 
-            current_highest = max(registers.values())
-            if current_highest > all_time_highest:
-                all_time_highest = current_highest
+                current_highest = max(registers.values())
+                if current_highest > all_time_highest:
+                    all_time_highest = current_highest
 
     return current_highest, all_time_highest
 
