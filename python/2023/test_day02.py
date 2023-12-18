@@ -13,15 +13,15 @@ Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
 Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"""
 
         with open("./input_day02.txt", encoding="utf-8") as fp:
-            cls.data = fp.read()
+            cls.input_data = fp.read()
 
     def test_part1(self):
         self.assertEqual(part1(self.example_data), 8)
-        self.assertEqual(part1(self.data), 2101)
+        self.assertEqual(part1(self.input_data), 2101)
 
     def test_part2(self):
         self.assertEqual(part2(self.example_data), 2286)
-        self.assertEqual(part2(self.data), 58269)
+        self.assertEqual(part2(self.input_data), 58269)
 
 
 if __name__ == "__main__":

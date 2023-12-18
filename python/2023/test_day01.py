@@ -19,15 +19,15 @@ xtwone3four
 zoneight234
 7pqrstsixteen"""
         with open("./input_day01.txt", encoding="utf-8") as fp:
-            cls.data = fp.read()
+            cls.input_data = fp.read()
 
     def test_part1(self):
         self.assertEqual(part1(self.example_data_1), 142)
-        self.assertEqual(part1(self.data), 54708)
+        self.assertEqual(part1(self.input_data), 54708)
 
     def test_part2(self):
         self.assertEqual(part2(self.example_data_2), 281)
-        self.assertEqual(part2(self.data), 54087)
+        self.assertEqual(part2(self.input_data), 54087)
 
 
 if __name__ == "__main__":
