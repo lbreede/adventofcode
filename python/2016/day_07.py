@@ -15,7 +15,12 @@ def is_abba(sequence):
     return False
 
 
-data = ("abba[mnop]qrst", "abcd[bddb]xyyx", "aaaa[qwer]tyui", "ioxxoj[asdfgh]zxcvbn")
+data = (
+    "abba[mnop]qrst",
+    "abcd[bddb]xyyx",
+    "aaaa[qwer]tyui",
+    "ioxxoj[asdfgh]zxcvbn",
+)
 
 for ip in data:
     a, b = ip.split("[")

@@ -32,7 +32,9 @@ for i, row in enumerate(trees):
         is_visible_dn = is_visible_at_dir(dn, tree)
         is_visible_rg = is_visible_at_dir(rg, tree)
         is_visible_lf = is_visible_at_dir(lf, tree)
-        is_visible = any((is_visible_up, is_visible_dn, is_visible_rg, is_visible_lf))
+        is_visible = any(
+            (is_visible_up, is_visible_dn, is_visible_rg, is_visible_lf)
+        )
         nvisible += 1 if is_visible else 0
 
         dist_up = distance_at_dir(up, tree)

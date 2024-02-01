@@ -7,7 +7,9 @@ def part_one(passphrase: str) -> bool:
 
 
 def part_two(passphrase: str) -> bool:
-    passphrase = " ".join(["".join(sorted(word)) for word in passphrase.split()])
+    passphrase = " ".join(
+        ["".join(sorted(word)) for word in passphrase.split()]
+    )
     return part_one(passphrase)
 
 

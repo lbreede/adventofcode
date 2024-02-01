@@ -43,7 +43,9 @@ class BingoBoard:
     #     return False
 
     def _check_bingo(self) -> bool:
-        return self.check_rows() or self.check_columns()  # or self.check_diagonals()
+        return (
+            self.check_rows() or self.check_columns()
+        )  # or self.check_diagonals()
 
     def get_score(self) -> int:
         if self._check_bingo():
@@ -64,7 +66,10 @@ def get_numbers(data: str) -> list[int]:
 
 
 def get_bingo_boards(data: str) -> list[BingoBoard]:
-    return [BingoBoard(board, i + 1) for i, board in enumerate(data.split("\n\n")[1:])]
+    return [
+        BingoBoard(board, i + 1)
+        for i, board in enumerate(data.split("\n\n")[1:])
+    ]
 
 
 def main() -> None:

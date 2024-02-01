@@ -71,12 +71,15 @@ def get_coord_dict(coords, offset=0):
                 dist_dict[i] = dist
 
             dist_dict = {
-                k: v for k, v in sorted(dist_dict.items(), key=lambda item: item[1])
+                k: v
+                for k, v in sorted(dist_dict.items(), key=lambda item: item[1])
             }
             dist_vals = list(dist_dict.values())
             val_0, val_1 = dist_vals[:2]
             min_dist = val_0 if val_0 != val_1 else None
-            closest_id = list(dist_dict.keys())[0] if min_dist is not None else None
+            closest_id = (
+                list(dist_dict.keys())[0] if min_dist is not None else None
+            )
 
             if closest_id is not None:
                 if closest_id in coord_dict:

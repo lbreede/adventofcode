@@ -23,7 +23,9 @@ class IntcodeComputer:
             else:
                 raise Exception("unsupported program")
         else:
-            raise TypeError(f"unsupported type for program: '{type(program).__name__}'")
+            raise TypeError(
+                f"unsupported type for program: '{type(program).__name__}'"
+            )
 
     def _load_program_from_list(self, program: List[int]) -> None:
         self.log("loading program from list")

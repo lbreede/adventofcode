@@ -25,7 +25,9 @@ with open("input.txt") as fp:
             children = [" ".join(c.split(" ")[:3]) for c in child.split(", ")]
             advanced_children = []
             for child in children:
-                n, *color = [int(x) if x.isnumeric() else x for x in child.split(" ")]
+                n, *color = [
+                    int(x) if x.isnumeric() else x for x in child.split(" ")
+                ]
                 color = " ".join(color)
                 advanced_children.append([n, color])
         else:

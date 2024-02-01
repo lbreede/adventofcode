@@ -23,14 +23,18 @@ def main() -> None:
     start = time.time()
     steps = escape_maze(jump_offsets.copy())
     duration = time.time() - start
-    print(f"Part 1: exit reached in {steps:,} steps after {duration:.3f} seconds.")
+    print(
+        f"Part 1: exit reached in {steps:,} steps after {duration:.3f} seconds."
+    )
 
     assert escape_maze(example, part_two=True) == 10
 
     start = time.time()
     steps = escape_maze(jump_offsets, part_two=True)
     duration = time.time() - start
-    print(f"Part 2: exit reached in {steps:,} steps after {duration:.3f} seconds.")
+    print(
+        f"Part 2: exit reached in {steps:,} steps after {duration:.3f} seconds."
+    )
 
 
 if __name__ == "__main__":

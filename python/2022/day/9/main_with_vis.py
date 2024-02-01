@@ -108,16 +108,36 @@ with open("example2.txt") as fp:
 
             grid = init_grid(visited=visited_two)
             grid[HHEIGHT][HWIDTH] = bcolors.FAIL + bold(" s")
-            grid[nine[1] + HHEIGHT][nine[0] + HWIDTH] = bcolors.OKCYAN + bold(" 9")
-            grid[eight[1] + HHEIGHT][eight[0] + HWIDTH] = bcolors.OKCYAN + bold(" 8")
-            grid[seven[1] + HHEIGHT][seven[0] + HWIDTH] = bcolors.OKCYAN + bold(" 7")
-            grid[six[1] + HHEIGHT][six[0] + HWIDTH] = bcolors.OKCYAN + bold(" 6")
-            grid[five[1] + HHEIGHT][five[0] + HWIDTH] = bcolors.OKCYAN + bold(" 5")
-            grid[four[1] + HHEIGHT][four[0] + HWIDTH] = bcolors.OKCYAN + bold(" 4")
-            grid[three[1] + HHEIGHT][three[0] + HWIDTH] = bcolors.OKCYAN + bold(" 3")
-            grid[two[1] + HHEIGHT][two[0] + HWIDTH] = bcolors.OKCYAN + bold(" 2")
-            grid[one[1] + HHEIGHT][one[0] + HWIDTH] = bcolors.OKCYAN + bold(" 1")
-            grid[head[1] + HHEIGHT][head[0] + HWIDTH] = bcolors.OKGREEN + bold(" H")
+            grid[nine[1] + HHEIGHT][nine[0] + HWIDTH] = bcolors.OKCYAN + bold(
+                " 9"
+            )
+            grid[eight[1] + HHEIGHT][
+                eight[0] + HWIDTH
+            ] = bcolors.OKCYAN + bold(" 8")
+            grid[seven[1] + HHEIGHT][
+                seven[0] + HWIDTH
+            ] = bcolors.OKCYAN + bold(" 7")
+            grid[six[1] + HHEIGHT][six[0] + HWIDTH] = bcolors.OKCYAN + bold(
+                " 6"
+            )
+            grid[five[1] + HHEIGHT][five[0] + HWIDTH] = bcolors.OKCYAN + bold(
+                " 5"
+            )
+            grid[four[1] + HHEIGHT][four[0] + HWIDTH] = bcolors.OKCYAN + bold(
+                " 4"
+            )
+            grid[three[1] + HHEIGHT][
+                three[0] + HWIDTH
+            ] = bcolors.OKCYAN + bold(" 3")
+            grid[two[1] + HHEIGHT][two[0] + HWIDTH] = bcolors.OKCYAN + bold(
+                " 2"
+            )
+            grid[one[1] + HHEIGHT][one[0] + HWIDTH] = bcolors.OKCYAN + bold(
+                " 1"
+            )
+            grid[head[1] + HHEIGHT][head[0] + HWIDTH] = bcolors.OKGREEN + bold(
+                " H"
+            )
 
             render_grid(grid)
             time.sleep(0.1)
