@@ -47,9 +47,7 @@ def find_laziest_guard(date_dic):
             if guard not in dic:
                 dic[guard] = 0
             dic[guard] += len(times)
-    sorted_dic = {
-        k: v for k, v in sorted(dic.items(), key=lambda item: item[1])
-    }
+    sorted_dic = {k: v for k, v in sorted(dic.items(), key=lambda item: item[1])}
     return list(sorted_dic.keys())[-1]
 
 

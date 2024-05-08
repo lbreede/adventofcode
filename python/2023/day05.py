@@ -19,14 +19,10 @@ def get_seed_ranges(data: str) -> set[int]:
 
 
 def get_map(data: str, name: str) -> Map:
-    values = [m for m in data.split("\n\n") if m.startswith(name)][
-        0
-    ].splitlines()[1:]
+    values = [m for m in data.split("\n\n") if m.startswith(name)][0].splitlines()[1:]
     new_map: Map = []
     for line in values:
-        dst_rng_start, src_rng_start, rng_length = [
-            int(x) for x in line.split()
-        ]
+        dst_rng_start, src_rng_start, rng_length = [int(x) for x in line.split()]
         src_rng = range(src_rng_start, src_rng_start + rng_length)
         dst_rng = range(dst_rng_start, dst_rng_start + rng_length)
         new_map.append((src_rng, dst_rng))

@@ -1,5 +1,4 @@
 # --- Day 11: Monkey in the Middle ---
-from pprint import pprint
 from numpy import prod
 from tqdm import trange
 from copy import deepcopy
@@ -31,9 +30,7 @@ for _ in trange(20):
         for old in monkey["items"].copy():
             exec(monkey["op"])
             new //= 3
-            monkeys_one[monkey[new % monkey["divisor"] == 0]]["items"].append(
-                new
-            )
+            monkeys_one[monkey[new % monkey["divisor"] == 0]]["items"].append(new)
             monkey["items"].remove(old)
 
 monkeys_two = deepcopy(monkeys)
@@ -42,16 +39,12 @@ for _ in trange(20):
         monkey["inspections"] += len(monkey["items"])
         for old in monkey["items"].copy():
             exec(monkey["op"])
-            monkeys_two[monkey[new % monkey["divisor"] == 0]]["items"].append(
-                new
-            )
+            monkeys_two[monkey[new % monkey["divisor"] == 0]]["items"].append(new)
             monkey["items"].remove(old)
 
 
 for k, v in monkeys_one.items():
     print("Monkey", k, ":", v["inspections"])
 
-part_one = prod(
-    sorted([val["inspections"] for val in monkeys_one.values()])[-2:]
-)
+part_one = prod(sorted([val["inspections"] for val in monkeys_one.values()])[-2:])
 print(part_one)

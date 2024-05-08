@@ -10,13 +10,9 @@ class CathodeRayTube:
 
     def noop(self):
         self.screen.append("") if self.cycle % 40 == 0 else None
-        self.screen[-1] += (
-            "██" if self.x - 1 <= self.cycle % 40 <= self.x + 1 else "  "
-        )
+        self.screen[-1] += "██" if self.x - 1 <= self.cycle % 40 <= self.x + 1 else "  "
         self.cycle += 1
-        self.signal += (
-            self.cycle * self.x if (self.cycle - 20) % 40 == 0 else 0
-        )
+        self.signal += self.cycle * self.x if (self.cycle - 20) % 40 == 0 else 0
 
     def addx(self, val):
         for _ in range(2):

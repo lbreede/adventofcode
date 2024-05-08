@@ -1,7 +1,6 @@
 # --- Day 12: Hill Climbing Algorithm ---
 from string import ascii_lowercase as lowercase
-import random
-from itertools import combinations, permutations
+from itertools import permutations
 
 
 def can_move(curr_val, next_val):

@@ -1,4 +1,4 @@
 [MASTER]
-disable=missing-docstring
+disable=, missing-docstring
 [FORMAT]
 ; good-names=

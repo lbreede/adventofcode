@@ -1,5 +1,4 @@
 # --- Day 1: Inverse Captcha ---
-
 import time
 from typing import Callable
 
@@ -9,9 +8,7 @@ def part_one(captcha: str) -> int:
 
 
 def part_two(captcha: str) -> int:
-    return solve_captcha(
-        captcha, lambda i, length: captcha[(i + length // 2) % length]
-    )
+    return solve_captcha(captcha, lambda i, length: captcha[(i + length // 2) % length])
 
 
 def solve_captcha(captcha: str, func: Callable[[int, int], str]) -> int:

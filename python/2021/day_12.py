@@ -1,7 +1,6 @@
 # --- Day 12: Passage Pathing ---
 
 from aoc_helper import load_input
-import re
 
 
 def find_next(path, lst):

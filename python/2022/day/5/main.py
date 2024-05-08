@@ -2,9 +2,7 @@
 from copy import deepcopy
 
 
-def move_crates(
-    lst: list, n: int, src: int, dst: int, reverse: bool = False
-) -> list:
+def move_crates(lst: list, n: int, src: int, dst: int, reverse: bool = False) -> list:
     crates_to_move = lst[src][:n][::-1] if reverse else lst[src][:n]
 
     for crate in crates_to_move:
@@ -27,12 +25,8 @@ for line in crates_ascii.split("\n"):
         if crate_letter != " ":
             crate_list[i].append(crate_letter)
 
-commands = [
-    [int(y) for y in x.split() if y.isnumeric()] for x in commands.split("\n")
-]
-commands = [
-    [y - 1 if i != 0 else y for i, y in enumerate(x)] for x in commands
-]
+commands = [[int(y) for y in x.split() if y.isnumeric()] for x in commands.split("\n")]
+commands = [[y - 1 if i != 0 else y for i, y in enumerate(x)] for x in commands]
 
 crate_list_one = deepcopy(crate_list)
 crate_list_two = deepcopy(crate_list)

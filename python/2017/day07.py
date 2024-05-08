@@ -63,9 +63,7 @@ def part_two(tower: Program) -> int:
         else:
             break
 
-    child_weights = [
-        child.get_weight() for child in unbalanced_program.children
-    ]
+    child_weights = [child.get_weight() for child in unbalanced_program.children]
     heavy_child: Optional[Program] = None
     for child in unbalanced_program.children:
         if child_weights.count(child.get_weight()) == 1:

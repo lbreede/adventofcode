@@ -1,6 +1,5 @@
 # --- Day 5: Alchemical Reduction ---
 import re
-import os
 from tqdm import trange
 
 

@@ -1,9 +1,6 @@
 # --- Day 7: Internet Protocol Version 7 ---
 
 
-import re
-
-
 def is_abba(sequence):
     half = len(sequence) // 2
 

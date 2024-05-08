@@ -25,9 +25,7 @@ found = 0
 for i in range(len(line_list)):
     for j in range(len(line_list)):
         matches = [
-            k
-            for k in range(len(line_list[i]))
-            if line_list[i][k] != line_list[j][k]
+            k for k in range(len(line_list[i])) if line_list[i][k] != line_list[j][k]
         ]
         if len(matches) == 1 and found == 0:
             oldstr = line_list[i]

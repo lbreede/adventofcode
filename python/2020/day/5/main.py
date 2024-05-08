@@ -7,9 +7,7 @@ def findseat(code: str, amount: int) -> int:
     for i in range(len(code)):
         amount //= 2
         if code[i] == "F" or code[i] == "L":  # and this?
-            current_max -= (
-                amount  # or this? Don't even know what I was thinking..
-            )
+            current_max -= amount  # or this? Don't even know what I was thinking..
         elif code[i] == "B" or code[i] == "R":
             current_min += amount
     return current_min
@@ -27,10 +25,6 @@ with open("input.txt") as fp:
 
 highest_seat_id = sorted(all_seat_ids)[-1]
 for i in range(highest_seat_id):
-    if (
-        i - 1 in all_seat_ids
-        and i not in all_seat_ids
-        and i + 1 in all_seat_ids
-    ):
+    if i - 1 in all_seat_ids and i not in all_seat_ids and i + 1 in all_seat_ids:
         break
 print("Part 1:", highest_seat_id, "\nPart 2:", i)

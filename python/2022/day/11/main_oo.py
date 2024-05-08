@@ -1,5 +1,4 @@
 # --- Day 11: Monkey in the Middle ---
-from pprint import pprint
 from numpy import prod
 from tqdm import trange
 from copy import deepcopy

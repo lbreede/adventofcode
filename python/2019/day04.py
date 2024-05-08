@@ -44,8 +44,7 @@ def has_exact_double(password):
 
     """
     return any(
-        len(match.group(0)) == 2
-        for match in re.finditer(r"(\d)\1+", str(password))
+        len(match.group(0)) == 2 for match in re.finditer(r"(\d)\1+", str(password))
     )
 
 

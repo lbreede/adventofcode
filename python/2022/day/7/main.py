@@ -11,9 +11,7 @@ with open("input.txt") as fp:
         if match_cd:
             arg = match_cd.group(1)
             name = f"{arg} (dir)"
-            curr_dir = (
-                Node(name, parent=curr_dir) if arg != ".." else curr_dir.parent
-            )
+            curr_dir = Node(name, parent=curr_dir) if arg != ".." else curr_dir.parent
         elif match_file:
             size, name = match_file.groups()
             name = f"{name} (file, size={size})"

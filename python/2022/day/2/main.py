@@ -11,12 +11,14 @@ SHAPE_MAP = {
     "Z": {"game_score": 6, "shape": {"A": "Y", "B": "Z", "C": "X"}},
 }
 
-shape_score = lambda shape: list(SHAPE_MAP.keys()).index(shape) + 1
+
+def shape_score(shape: str) -> int:
+    return list(SHAPE_MAP.keys()).index(shape) + 1
 
 
-def main():
+def main() -> None:
     total_one = total_two = 0
-    with open("input.txt", encoding="utf8") as fp:
+    with open("input.txt", "r", encoding="utf-8") as fp:
         for game in fp.read().splitlines():
             left, right = game.split(" ")
             total_one += GAME_MAP[game] + shape_score(right)

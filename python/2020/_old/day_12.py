@@ -52,8 +52,7 @@ def part_2(lst, print_log=False):
             logging.basicConfig(level=level, format=fmt)
             logging.info(f"Current Position: [ {north} | {east} ]")
             logging.info(
-                f"Current Waypoint: [ {north_waypoint} | "
-                f"{east_waypoint} ]\n"
+                f"Current Waypoint: [ {north_waypoint} | " f"{east_waypoint} ]\n"
             )
         action, value = x
 
@@ -86,8 +85,7 @@ def part_2(lst, print_log=False):
             logging.info(f"Action: {action}, Value: {value}\n")
             logging.info(f"Current Position: [ {north} | {east} ]")
             logging.info(
-                f"Current Waypoint: [ {north_waypoint} | "
-                f"{east_waypoint} ]\n\n"
+                f"Current Waypoint: [ {north_waypoint} | " f"{east_waypoint} ]\n\n"
             )
 
     return abs(east) + abs(north)

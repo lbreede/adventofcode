@@ -1,108 +1,79 @@
 # --- Day 6: Chronal Coordinates ---
 
-from typing import Tuple, List
+from pathlib import Path
+from string import ascii_uppercase, ascii_lowercase
+from os import PathLike
+from typing import Optional
 
-ALPHABET = "abcdefghijklmnopqrstuvwxyz"
-
-Coord = Tuple[int, int]
-
-
-def read_coords(filepath: str) -> list:
-    """Reads a text file on disk and converts each line from a string to a tuple with
-    two integers, a coordinate. Every coordinate is then returned as a list.
-
-    Args:
-        filepath (str): The filepath on disk.
-
-    Returns:
-        list: A list of all coordinates extracted from a text file.
-
-    """
-    with open(filepath) as fp:
-        line_list = fp.read().split("\n")
-
-    c = [tuple(map(int, line.split(","))) for line in line_list]
-    return c
+Coord = tuple[int, int]
+CoordList = list[Coord]
 
 
-def calc_distance(a: Coord, b: Coord) -> int:
-    """Calculates the Manhatten distance between two coordinates.
-
-    Args:
-        a (Coord): The start coordinate.
-        b (Coord): The end coordinate.
-
-    Returns:
-        int: The Manhatten distance from start to end.
-
-    """
-    return abs(a[0] - b[0]) + abs(a[1] - b[1])
+def targets_from_file(file: PathLike) -> CoordList:
+    targets: CoordList = []
+    with open(file, "r", encoding="utf-8") as fp:
+        for line in fp:
+            x, y = (int(n) for n in line.strip().split(", "))
+            targets.append((x, y))
+    return targets
 
 
-def calc_minmax(coord_list: List[Coord]) -> Tuple[int, int, int, int]:
-    """Calculates the minimum and maximum for both x and y for all coordinates.
-
-    Args:
-        coord_list (List[Coord]): A list of all coordinates.
-
-    Returns:
-        Tuple[int, int, int, int]: A ordered tuple holding the min for x, min for y, max
-            for x and max for y in this order.
-
-    """
-    xl, yl = [], []
-
-    for x, y in coords:
-        xl.append(x)
-        yl.append(y)
-
-    return (min(xl), min(yl), max(xl), max(yl))
+def manhatten_distance(a: Coord, b: Coord) -> int:
+    return abs(b[0] - a[0]) + abs((b[1] - a[1]))
 
 
-def get_coord_dict(coords, offset=0):
-    xmin, ymin, xmax, ymax = calc_minmax(coords)
-    coord_dict = {}
-    for y in range(xmin - offset, xmax + 1 + offset):
-        for x in range(ymin - offset, ymax + 1 + offset):
-            dist_dict = {}
+def find_target(coord: Coord, targets: CoordList) -> Optional[int]:
+    dists = [manhatten_distance(coord, target) for target in targets]
+    min_dist = min(dists)
 
-            for i, coord in enumerate(coords):
-                dist = calc_distance((x, y), coord)
-                dist_dict[i] = dist
+    if dists.count(min_dist) != 1:
+        return
 
-            dist_dict = {
-                k: v
-                for k, v in sorted(dist_dict.items(), key=lambda item: item[1])
-            }
-            dist_vals = list(dist_dict.values())
-            val_0, val_1 = dist_vals[:2]
-            min_dist = val_0 if val_0 != val_1 else None
-            closest_id = (
-                list(dist_dict.keys())[0] if min_dist is not None else None
-            )
+    index = dists.index(min_dist)
+    if min_dist == 0:
+        return index
+    return index
 
-            if closest_id is not None:
-                if closest_id in coord_dict:
-                    coord_dict[closest_id].append((x, y))
+
+def print_grid(grid: list[list[str]]) -> None:
+    for row in grid:
+        print("".join(row))
+
+
+def main():
+    file = Path("day06_input.txt")
+    targets = targets_from_file(file)
+
+    x_min = min(x for x, _ in targets)
+    x_max = max(x for x, _ in targets)
+    y_min = min(y for _, y in targets)
+    y_max = max(y for _, y in targets)
+
+    scores_wide: dict[int, int] = {}
+    scores_narrow: dict[int, int] = {}
+    for j in range(y_min, y_max + 1):
+        for i in range(x_min, x_max + 1):
+            target = find_target((i, j), targets)
+            if target is None:
+                continue
+
+            if target not in scores_wide:
+                scores_wide[target] = 1
+            else:
+                scores_wide[target] += 1
+
+            if i != x_min and i != x_max and j != y_min and j != y_max:
+                if target not in scores_narrow:
+                    scores_narrow[target] = 1
                 else:
-                    coord_dict[closest_id] = [(x, y)]
+                    scores_narrow[target] += 1
 
-    return coord_dict
-
-
-def find_largest_area(coords):
-    coord_dict_a = get_coord_dict(coords)
-    coord_dict_b = get_coord_dict(coords, offset=1)
-
-    areas = []
-
-    for k, v in coord_dict_a.items():
-        if len(v) == len(coord_dict_b[k]):
-            areas.append(len(v))
-
-    return max(areas)
+    largest_area = 0
+    for k, v in scores_narrow.items():
+        if scores_narrow[k] == scores_wide[k]:
+            largest_area = max(largest_area, v)
+    print(f"Part 1: The largest area that isn't infinite is {largest_area}")
 
 
-coords = read_coords("day06_input.txt")
-largest_area = find_largest_area(coords)
-print(largest_area)
+if __name__ == "__main__":
+    main()
