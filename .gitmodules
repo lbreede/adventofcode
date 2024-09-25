@@ -1,3 +1,6 @@
 [submodule "rust/aoc2023"]
 	path = rust/aoc2023
 	url = https://github.com/lbreede/aoc2023.git
+[submodule "rust/2015"]
+	path = rust/2015
+	url = https://github.com/lbreede/aoc2015.git
