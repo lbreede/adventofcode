@@ -10,3 +10,6 @@
 [submodule "python/2024"]
 	path = python/2024
 	url = https://github.com/lbreede/aoc-2024-python
+[submodule "rust/2024"]
+	path = rust/2024
+	url = https://github.com/lbreede/aoc-2024-rust
