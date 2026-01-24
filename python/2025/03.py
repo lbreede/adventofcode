@@ -10,7 +10,7 @@ EXAMPLE = """987654321111111
 
 def max_k_subseq(digits: str, k: int) -> int:
     to_remove = len(digits) - k
-    stack = []
+    stack: list[str] = []
     for d in digits:
         while to_remove and stack and stack[-1] < d:
             stack.pop()
