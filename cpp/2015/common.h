@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
@@ -7,12 +8,12 @@
 #include <sstream>
 #include <string>
 
-inline void start_day(int day) {
-  std::cout << "Advent of Code 2025 - Day " << std::setw(2) << std::setfill('0')
+inline void start_day(const unsigned int day) {
+  std::cout << "Advent of Code 2015 - Day " << std::setw(2) << std::setfill('0')
             << day << "\n\n";
 }
 
-inline std::string input_path_for_day(int day) {
+inline std::string input_path_for_day(const unsigned int day) {
   std::ostringstream path_builder;
   path_builder << "./input/" << std::setw(2) << std::setfill('0') << day
                << ".txt";
