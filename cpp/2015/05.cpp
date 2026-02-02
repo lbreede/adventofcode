@@ -96,6 +96,11 @@ int main() {
   assert(rule5("abcdefeghi"));
   assert(rule5("aaa"));
 
+  assert(is_nice2("qjhvhtzxzqqjkmpb"));
+  assert(is_nice2("xxyxx"));
+  assert(!is_nice2("uurcxstgmygtbstg"));
+  assert(!is_nice2("ieodomkazucvgmuy"));
+
   std::cout << "Result = " << part2(input) << "\n";
 
   return 0;
